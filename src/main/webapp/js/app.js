@@ -36,7 +36,8 @@ app.controller('BlogCtrl', blogController);
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('productController', ['$scope','$http', productFunction]);
+app.controller('productController', ['$scope','$http','$uibModal', productFunction]);
+app.controller('CheckoutCtrl',['$scope', 'totalAmount',checkOutController])
 
 
 

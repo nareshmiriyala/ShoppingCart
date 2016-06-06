@@ -21,10 +21,66 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var productFunction = function ($scope, $http) {
-
+var productFunction = function ($scope, $http, $uibModal) {
+    $scope.cart = [];
     $http.get('/products')
         .then(function (response) {
             $scope.products = response.data;
         });
+    $scope.addToCart = function (product) {
+        var found = false;
+        $scope.cart.forEach(function (item) {
+            if (item.id === product.id) {
+                item.quantity++;
+                found = true;
+            }
+        });
+        if (!found) {
+            $scope.cart.push(angular.extend({quantity: 1}, product));
+        }
+    };
+    $scope.getCartPrice = function () {
+        var total = 0;
+        $scope.cart.forEach(function (product) {
+            total += product.price * product.quantity;
+        });
+        return total;
+    };
+
+    $scope.checkout = function () {
+        $uibModal.open({
+            templateUrl: 'pages/checkout.html',
+            animation: true,
+            controller: 'CheckoutCtrl',
+            resolve: {
+                totalAmount: $scope.getCartPrice
+            },
+            scope: $scope,
+            size:'lg'
+        });
+    };
+};
+
+var checkOutController=function($scope,totalAmount){
+    $scope.totalAmount = totalAmount;
+    console.log("Amount:"+totalAmount);
+
+    $scope.onSubmit = function () {
+        $scope.processing = true;
+    };
+
+    $scope.stripeCallback = function (code, result) {
+        $scope.processing = false;
+        $scope.hideAlerts();
+        if (result.error) {
+            $scope.stripeError = result.error.message;
+        } else {
+            $scope.stripeToken = result.id;
+        }
+    };
+
+    $scope.hideAlerts = function () {
+        $scope.stripeError = null;
+        $scope.stripeToken = null;
+    };
 };
