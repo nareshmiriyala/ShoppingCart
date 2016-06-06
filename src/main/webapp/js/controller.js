@@ -23,11 +23,8 @@ var pageController = function (/* $scope, $location, $http */) {
 
 var productFunction = function ($scope, $http) {
 
-    $scope.search = function () {
-        $http.get('/products')
-            .then(function (response) {
-                $scope.products = response.data;
-            });
-    };
-
+    $http.get('/products')
+        .then(function (response) {
+            $scope.products = response.data;
+        });
 };

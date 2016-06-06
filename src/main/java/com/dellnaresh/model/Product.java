@@ -25,6 +25,9 @@ public class Product {
     @NotNull
     private BigDecimal unitPrice;
 
+    public Product() {
+    }
+
     public Product(String name, String image, BigDecimal unitPrice) {
         this.name = name;
         this.image = image;

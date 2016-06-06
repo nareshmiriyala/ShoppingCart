@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductRepository repository;
-    @RequestMapping(method = RequestMethod.GET, value = "/products", consumes = {"application/json", "application/xml"})
+    @RequestMapping(method = RequestMethod.GET, value = "/products", produces= {"application/json", "application/xml"})
     public List<Product> getProducts(){
         return repository.findAll();
     }
