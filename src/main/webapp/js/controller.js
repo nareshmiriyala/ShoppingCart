@@ -21,40 +21,13 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var searchFunction = function ($scope, $http) {
-    $scope.data = [];
-    $scope.viewby = 10;
-    $scope.currentPage = 1;
-    $scope.itemsPerPage = $scope.viewby;
-    $scope.maxSize = 5; //Number of pager buttons to show
-    $scope.orderByField = 'count';
-    $scope.reverseSort = true;
-    $scope.search = function () {
-        console.log("Search :" + $scope.query)
-        $http.post('/search', $scope.query)
-            .then(function (response) {
-                $scope.data = response.data;
-                $scope.totalItems = $scope.data.length;
-            });
-    };
-    $scope.insertRecords=function () {
-        console.log("Inserting Records");
-        $http.post('/insertRecords');
-    };
-    $scope.indexRecords=function () {
-        console.log("Indexing Records");
-        $http.post('/indexRecords');
-    };
+var productFunction = function ($scope, $http) {
 
-    $scope.pageChanged = function () {
-        console.log('Page changed to: ' + $scope.currentPage);
-    };
-    $scope.setPage = function (pageNo) {
-        $scope.currentPage = pageNo;
-    };
-    $scope.setItemsPerPage = function (num) {
-        $scope.itemsPerPage = num;
-        $scope.currentPage = 1; //reset to first paghe
+    $scope.search = function () {
+        $http.get('/products')
+            .then(function (response) {
+                $scope.products = response.data;
+            });
     };
 
 };

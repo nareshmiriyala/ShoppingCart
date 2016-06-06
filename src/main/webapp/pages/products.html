@@ -16,8 +16,18 @@
     </div>
 
     <div class="row">
-        <div ng-controller="searchController">
-
+        <div ng-controller="productController">
+            <ul class="product-list small-block-grid-3">
+                <li ng-repeat="product in products">
+                    <figure>
+                        <img ng-src="{{product.image}}" alt="{{product.name}}">
+                        <figcaption>
+                            <h3>{{product.name}}, {{product.unitPrice}}$</h3>
+                            <button ng-click="addToCart(product);">Add to cart</button>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

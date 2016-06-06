@@ -16,7 +16,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         // Pages
         .when("/about", {templateUrl: "pages/about.html", controller: "PageCtrl"})
         .when("/faq", {templateUrl: "pages/faq.html", controller: "PageCtrl"})
-        .when("/exchangerate", {templateUrl: "pages/searchName.html", controller: "searchController"})
+        .when("/products", {templateUrl: "pages/products.html", controller: "productController"})
         .when("/services", {templateUrl: "pages/services.html", controller: "PageCtrl"})
         .when("/contact", {templateUrl: "pages/contact.html", controller: "PageCtrl"})
         // Blog
@@ -36,7 +36,7 @@ app.controller('BlogCtrl', blogController);
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('searchController', ['$scope','$http', searchFunction]);
+app.controller('productController', ['$scope','$http', productFunction]);
 
 
 
