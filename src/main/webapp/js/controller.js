@@ -21,7 +21,7 @@ var pageController = function (/* $scope, $location, $http */) {
     })
 };
 
-var productFunction = function ($scope, $http, $uibModal) {
+var productFunction = function ($scope, $http, $uibModal,productService) {
     $scope.cart = [];
     $http.get('/products')
         .then(function (response) {
@@ -37,6 +37,7 @@ var productFunction = function ($scope, $http, $uibModal) {
         });
         if (!found) {
             $scope.cart.push(angular.extend({quantity: 1}, product));
+            productService.addProduct(product);
         }
     };
     $scope.getCartPrice = function () {
@@ -83,4 +84,8 @@ var checkOutController=function($scope,totalAmount){
         $scope.stripeError = null;
         $scope.stripeToken = null;
     };
+};
+var cartController=function($scope,productService){
+    $scope.products = productService.getProducts();
+
 };

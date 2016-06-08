@@ -27,6 +27,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 /**
+ * Services
+ */
+app.service('productService',productService);
+/**
  * Controls the Blog
  */
 app.controller('BlogCtrl', blogController);
@@ -36,8 +40,9 @@ app.controller('BlogCtrl', blogController);
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('productController', ['$scope','$http','$uibModal', productFunction]);
-app.controller('CheckoutCtrl',['$scope', 'totalAmount',checkOutController])
+app.controller('productController', ['$scope','$http','$uibModal','productService', productFunction]);
+app.controller('CheckoutCtrl',['$scope', 'totalAmount',checkOutController]);
+app.controller('CartController',['$scope', 'productService',cartController]);
 
 
 
