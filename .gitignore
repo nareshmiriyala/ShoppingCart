@@ -52,5 +52,3 @@ fabric.properties
 .idea/misc.xml
 .idea/modules.xml
 ShoppingCart.iml
-pom.xml
-src/main/resources/
