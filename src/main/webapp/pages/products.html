@@ -28,7 +28,7 @@
                     </figure>
                 </li>
             </ul>
-            <div ng-if="cart.length" class="shopping-cart">
+            <div ng-if="cart.length">
                 <h2>{{cart.length}} items in cart, {{getCartPrice()}}$</h2>
 
 			<span class="cart-item th radius" ng-repeat="product in cart">

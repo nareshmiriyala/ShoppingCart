@@ -42,7 +42,7 @@ var productFunction = function ($scope, $http, $uibModal) {
     $scope.getCartPrice = function () {
         var total = 0;
         $scope.cart.forEach(function (product) {
-            total += product.price * product.quantity;
+            total += product.unitPrice * product.quantity;
         });
         return total;
     };
