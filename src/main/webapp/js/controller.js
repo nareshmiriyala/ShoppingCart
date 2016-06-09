@@ -87,5 +87,12 @@ var checkOutController=function($scope,totalAmount){
 };
 var cartController=function($scope,productService){
     $scope.products = productService.getProducts();
+    $scope.getCartPrice = function () {
+        var total = 0;
+        $scope.products.forEach(function (product) {
+            total += product.unitPrice * 1;
+        });
+        return total;
+    };
 
 };

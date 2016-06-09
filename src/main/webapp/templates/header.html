@@ -25,17 +25,28 @@
                 <li><a href="#/contact">Contact</a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <div ng-controller="CartController">
-                            {{products.length}}$
-                            </div>
-                        Blog <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#/blog">List of Posts</a>
-                        </li>
-                        <li><a href="#/blog/post">View One Post</a>
-                        </li>
-                    </ul>
+                    <div ng-controller="CartController">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+
+                            Items :{{products.length}}
+                            Price:{{getCartPrice()}}$
+
+                            <b class="caret"></b>
+                        </a>
+
+                        <ul ng-repeat="product in products" class="dropdown-menu ">
+                            <li>
+                                {{product.name}}<img ng-src="{{product.image}}" height="30" width="30"
+                                                     title="{{product.name}}"/>
+                            </li>
+                            <li>
+                                <button class="alert-success" ng-click="checkout();">Checkout</button>
+
+                            </li>
+                        </ul>
+
+
+                    </div>
                 </li>
             </ul>
         </div>
