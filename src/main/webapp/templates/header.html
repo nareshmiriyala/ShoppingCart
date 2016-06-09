@@ -34,11 +34,13 @@
                             <b class="caret"></b>
                         </a>
 
-                        <ul ng-repeat="product in products" class="dropdown-menu ">
-                            <li>
+                        <ul class="dropdown-menu ">
+                            <div ng-repeat="product in products">
+                            <li >
                                 {{product.name}}<img ng-src="{{product.image}}" height="30" width="30"
                                                      title="{{product.name}}"/>
                             </li>
+                            </div>
                             <li>
                                 <button class="alert-success" ng-click="checkout();">Checkout</button>
 
