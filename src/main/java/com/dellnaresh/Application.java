@@ -24,6 +24,7 @@ public class Application implements CommandLineRunner{
     @Override
     public void run(String... strings) throws Exception {
         productRepository.save(createProduct());
+        productRepository.save(new Product("Us Polo","images//uspolo.jpg", BigDecimal.valueOf(200)));
     }
 
     private Product createProduct() {
