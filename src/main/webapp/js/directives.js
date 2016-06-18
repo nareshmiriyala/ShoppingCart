@@ -5,3 +5,10 @@ app.directive('mySample', function () {
 
     };
 });
+
+app.directive('productThumbnail', function () {
+    return {
+        templateUrl: "pages/product.html"
+
+    };
+});

@@ -19,19 +19,7 @@
         <div ng-controller="productController">
             <div class="my-sample"></div>
             <div ng-repeat="product in products">
-
-                <div class="col-md-2 column productbox">
-                    <img ng-src="{{product.image}}" alt="{{product.name}}" class="img-responsive">
-                    <div class="producttitle">{{product.name}}</div>
-                    <div class="productprice">
-                        <div class="pull-right">
-                            <button ng-click="addToCart(product);" class="btn btn-danger btn-sm" role="button">Add to
-                                Cart
-                            </button>
-                        </div>
-                        <div class="pricetext">${{product.unitPrice}}</div>
-                    </div>
-                </div>
+                <product-thumbnail></product-thumbnail>
             </div>
 
         </div>
