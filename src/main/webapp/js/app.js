@@ -1,17 +1,16 @@
-
 /**
  * Main AngularJS Web Application
  */
 var app = angular.module('searchApp', [
-    'ngRoute','ui.bootstrap'
+    'ngRoute', 'ui.bootstrap'
 ]);
 
 /**
  * Configure the Routes
  */
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        // Home
+    // Home
         .when("/", {templateUrl: "pages/home.html", controller: "PageCtrl"})
         // Pages
         .when("/about", {templateUrl: "pages/about.html", controller: "PageCtrl"})
@@ -24,12 +23,13 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when("/blog/post", {templateUrl: "pages/blog_item.html", controller: "BlogCtrl"})
         // else 404
         .otherwise("/404", {templateUrl: "pages/404.html", controller: "PageCtrl"});
-}]);
+    $locationProvider.html5Mode(true);
+});
 
 /**
  * Services
  */
-app.service('productService',productService);
+app.service('productService', productService);
 /**
  * Controls the Blog
  */
@@ -40,9 +40,9 @@ app.controller('BlogCtrl', blogController);
  */
 app.controller('PageCtrl', pageController);
 
-app.controller('productController', ['$scope','$http','$uibModal','productService', productFunction]);
-app.controller('CheckoutCtrl',['$scope', 'totalAmount',checkOutController]);
-app.controller('CartController',['$scope', 'productService',cartController]);
+app.controller('productController', ['$scope', '$http', '$uibModal', 'productService', productFunction]);
+app.controller('CheckoutCtrl', ['$scope', 'totalAmount', checkOutController]);
+app.controller('CartController', ['$scope', 'productService', cartController]);
 
 
 
