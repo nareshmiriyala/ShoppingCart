@@ -16,16 +16,17 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'main/webapp/bower_components/moment/moment.js',
+            'main/webapp/bower_components/jquery/dist/jquery.min.js',
             'main/webapp/bower_components/angular/angular.js',
             'main/webapp/bower_components/angular-route/angular-route.min.js',
-            'main/webapp/bower_components/jquery/dist/jquery.min.js',
             'main/webapp/bower_components/bootstrap/dist/js/bootstrap.min.js',
             'main/webapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'main/webapp/js/services.js',
             'main/webapp/js/controller.js',
             'main/webapp/js/app.js',
             'main/webapp/js/directives.js',
-            'test/karma/lib/*.js'
+            'test/karma/lib/*.js',
+            'test/karma/unit/*.js'
         ],
 
 
