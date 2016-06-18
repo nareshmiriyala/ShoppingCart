@@ -1,7 +1,7 @@
 app.directive('mySample', function () {
     return {
         restrict: 'C',
-        template: "<input type='text' ng-model='sampleData'/> {{sampleData}}<br/>"
+        templateUrl: "pages/sample_data.html"
 
     };
 });
