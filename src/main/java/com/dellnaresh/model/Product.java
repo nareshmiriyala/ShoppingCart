@@ -20,6 +20,9 @@ public class Product {
     private String name;
     @Field
     @NotNull
+    private String description;
+    @Field
+    @NotNull
     private String image;
     @Field
     @NotNull
@@ -28,8 +31,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String image, BigDecimal unitPrice) {
+    public Product(String name, String description, String image, BigDecimal unitPrice) {
         this.name = name;
+        this.description = description;
         this.image = image;
         this.unitPrice = unitPrice;
     }
@@ -64,5 +68,13 @@ public class Product {
 
     public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

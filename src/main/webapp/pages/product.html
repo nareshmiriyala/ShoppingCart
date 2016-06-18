@@ -2,7 +2,12 @@
     <div class="embed-responsive embed-responsive-4by3">
         <img ng-src="{{product.image}}" alt="{{product.name}}" class="embed-responsive-item" width="304" height="236">
     </div>
-    <div class="producttitle">{{product.name}}</div>
+    <div>
+        <collapsible name="{{product.name}}">
+            <div>{{product.description}}</div>
+        </collapsible>
+    </div>
+
     <div class="productprice">
         <div class="pull-right">
             <button ng-click="addToCart(product);" class="btn btn-danger btn-sm" role="button">Add to
