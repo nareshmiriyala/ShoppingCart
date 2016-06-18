@@ -11,7 +11,9 @@ app.directive('productThumbnail', function () {
     return {
         restrict: 'E',
         templateUrl: "pages/product.html",
-        scope: {product: "=product"}
+        controller: 'productController',
+        scope: {product: "=product"},
+
 
     };
 });
