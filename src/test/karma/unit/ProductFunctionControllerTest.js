@@ -13,14 +13,6 @@ describe('ProductFunctionCtrl', function () {
             addProduct: function () {
             }
         });
-        uibModal = {
-            // create a mock object using spies
-            close: jasmine.createSpy('modalInstance.close'),
-            dismiss: jasmine.createSpy('modalInstance.dismiss'),
-            result: {
-                then: jasmine.createSpy('modalInstance.result.then')
-            }
-        };
 
     }));
 
@@ -29,7 +21,6 @@ describe('ProductFunctionCtrl', function () {
         var ctrl = $controllerConstructor("productController", {
             $scope: scope,
             $http: http,
-            $uibModal: uibModal,
             productService: mockProducts
         });
         httpBackend.flush();
@@ -37,5 +28,7 @@ describe('ProductFunctionCtrl', function () {
         var product = {id: 1};
         scope.addToCart(product);
         expect(mockProducts.calledOnce);
+        console.log(scope.products.length);
+        expect(scope.products.length).toEqual(3);
     });
 });
