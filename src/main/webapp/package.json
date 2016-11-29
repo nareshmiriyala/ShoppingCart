@@ -1,0 +1,32 @@
+{
+  "name": "shoppingcart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nareshmiriyala/ShoppingCart.git"
+  },
+  "author": "Naresh Miriyala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nareshmiriyala/ShoppingCart/issues"
+  },
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-mocks": "~1.4.7",
+    "angular-ui-bootstrap": "1.3.3",
+    "angular-spinner": "0.8.1",
+    "angular-animate": "1.5.7",
+    "angular-resource": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery": "~2.1.4",
+    "moment": "~2.10.6"
+  },
+  "homepage": "https://github.com/nareshmiriyala/ShoppingCart#readme"
+}
