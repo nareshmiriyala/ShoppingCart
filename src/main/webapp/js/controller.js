@@ -29,7 +29,7 @@ var productFunction = function ($scope, $http, $uibModal,productService) {
         });
     $scope.addToCart = function (product) {
         var found = false;
-        console.log("Proucts:" + product);
+        console.log("Products:" + product);
         $scope.cart.forEach(function (item) {
             if (item.id === product.id) {
                 item.quantity++;
