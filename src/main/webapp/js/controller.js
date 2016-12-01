@@ -111,8 +111,9 @@ app.controller("LoginController",function ($scope, $location,  UserService){
         UserService.authenticate($.param({username: $scope.username, password: $scope.password}),
             function (authenticationResult) {
                 var accessToken = authenticationResult.token;
+                $location.path("/home");
+
             });
-        $location.path("/home");
     };
 });
 
