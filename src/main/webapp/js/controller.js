@@ -5,7 +5,10 @@
 var blogController = function (/* $scope, $location, $http */) {
     console.log("Blog Controller reporting for duty.");
 };
-
+/**
+ * Controls the Blog
+ */
+app.controller('BlogCtrl', blogController);
 
 var pageController = function (/* $scope, $location, $http */) {
     console.log("Page Controller reporting for duty.");
@@ -20,6 +23,10 @@ var pageController = function (/* $scope, $location, $http */) {
         selector: "a[data-toggle=tooltip]"
     })
 };
+/**
+ * Controls all other Pages
+ */
+app.controller('PageCtrl', pageController);
 
 var productFunction = function ($scope, $http, $uibModal,productService) {
     $scope.cart = [];
@@ -97,3 +104,21 @@ var cartController=function($scope,productService){
     };
 
 };
+
+app.controller("LoginController",function ($scope, $location,  UserService){
+    console.log("login called");
+    $scope.login = function() {
+        UserService.authenticate($.param({username: $scope.username, password: $scope.password}),
+            function (authenticationResult) {
+                var accessToken = authenticationResult.token;
+            });
+        $location.path("/home");
+    };
+});
+
+
+
+
+app.controller('productController', ['$scope', '$http', '$uibModal', 'productService', productFunction]);
+app.controller('CheckoutCtrl', ['$scope', 'totalAmount', checkOutController]);
+app.controller('CartController', ['$scope', 'productService', cartController]);

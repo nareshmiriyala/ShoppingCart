@@ -4,6 +4,7 @@ import com.dellnaresh.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import static com.dellnaresh.model.ProductBuilder.aProduct;
  * Created by nareshm on 6/6/2016.
  */
 @SpringBootApplication
+@EnableAutoConfiguration
 public class Application implements CommandLineRunner {
     @Autowired
     private ProductRepository productRepository;
