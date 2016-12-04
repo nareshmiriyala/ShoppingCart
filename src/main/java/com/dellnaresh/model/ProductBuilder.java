@@ -11,6 +11,7 @@ public final class ProductBuilder {
     private String description;
     private String image;
     private BigDecimal unitPrice;
+    private String category;
 
     private ProductBuilder() {
     }
@@ -43,6 +44,10 @@ public final class ProductBuilder {
         this.unitPrice = unitPrice;
         return this;
     }
+    public ProductBuilder withCategory(String category) {
+        this.category = category;
+        return this;
+    }
 
     public Product build() {
         Product product = new Product();
@@ -51,6 +56,7 @@ public final class ProductBuilder {
         product.setDescription(description);
         product.setImage(image);
         product.setUnitPrice(unitPrice);
+        product.setCategory(category);
         return product;
     }
 }

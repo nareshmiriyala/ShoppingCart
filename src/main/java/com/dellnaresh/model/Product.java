@@ -28,14 +28,19 @@ public class Product {
     @NotNull
     private BigDecimal unitPrice;
 
+    @Field
+    @NotNull
+    private String category;
+
     public Product() {
     }
 
-    public Product(String name, String description, String image, BigDecimal unitPrice) {
-        this.name = name;
-        this.description = description;
-        this.image = image;
-        this.unitPrice = unitPrice;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public long getId() {
