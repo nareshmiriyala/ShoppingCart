@@ -28,47 +28,6 @@ var pageController = function (/* $scope, $location, $http */) {
  */
 app.controller('PageCtrl', pageController);
 
-var productFunction = function ($scope, $http, $uibModal,productService) {
-    $scope.cart = [];
-    $http.get('/products')
-        .then(function (response) {
-            $scope.products = response.data;
-        });
-    $scope.addToCart = function (product) {
-        var found = false;
-        console.log("Products:" + product);
-        $scope.cart.forEach(function (item) {
-            if (item.id === product.id) {
-                item.quantity++;
-                found = true;
-            }
-        });
-        if (!found) {
-            $scope.cart.push(angular.extend({quantity: 1}, product));
-            productService.addProduct(product);
-        }
-    };
-    $scope.getCartPrice = function () {
-        var total = 0;
-        $scope.cart.forEach(function (product) {
-            total += product.unitPrice * product.quantity;
-        });
-        return total;
-    };
-
-    $scope.checkout = function () {
-        $uibModal.open({
-            templateUrl: 'pages/checkout.html',
-            animation: true,
-            controller: 'CheckoutCtrl',
-            resolve: {
-                totalAmount: $scope.getCartPrice
-            },
-            scope: $scope,
-            size:'lg'
-        });
-    };
-};
 
 var checkOutController=function($scope,totalAmount){
     $scope.totalAmount = totalAmount;
@@ -120,6 +79,60 @@ app.controller("LoginController",function ($scope, $location,  UserService){
 
 
 
-app.controller('productController', ['$scope', '$http', '$uibModal', 'productService', productFunction]);
+app.controller('productController', function ($scope, $http, $uibModal,productService) {
+    $scope.cart = [];
+    var selectedCategory = null;
+    $scope.test=function(){
+        console.log("test call");
+    };
+    $scope.selectCategory = function (newCategory) {
+        console.log("Called selectCategory");
+        selectedCategory = newCategory;
+    };
+    $scope.categoryFilterFn = function (product) {
+        return selectedCategory == null ||
+            product.category == selectedCategory;
+    };
+    $http.get('/products')
+        .then(function (response) {
+            $scope.products = response.data;
+        });
+    $scope.addToCart = function (product) {
+        var found = false;
+        console.log("Products:" + product);
+        $scope.cart.forEach(function (item) {
+            if (item.id === product.id) {
+                item.quantity++;
+                found = true;
+            }
+        });
+        if (!found) {
+            $scope.cart.push(angular.extend({quantity: 1}, product));
+            productService.addProduct(product);
+        }
+    };
+    $scope.getCartPrice = function () {
+        var total = 0;
+        $scope.cart.forEach(function (product) {
+            total += product.unitPrice * product.quantity;
+        });
+        return total;
+    };
+
+    $scope.checkout = function () {
+        $uibModal.open({
+            templateUrl: 'pages/checkout.html',
+            animation: true,
+            controller: 'CheckoutCtrl',
+            resolve: {
+                totalAmount: $scope.getCartPrice
+            },
+            scope: $scope,
+            size:'lg'
+        });
+    };
+
+});
 app.controller('CheckoutCtrl', ['$scope', 'totalAmount', checkOutController]);
 app.controller('CartController', ['$scope', 'productService', cartController]);
+

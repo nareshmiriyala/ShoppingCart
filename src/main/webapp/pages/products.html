@@ -1,4 +1,4 @@
-<div class="container" ng-controller="productController">
+<div class="container" >
 
     <div class="row">
 
@@ -15,7 +15,7 @@
 
     </div>
 
-    <div class="panel panel-default row">
+    <div class="panel panel-default row" ng-controller="productController">
         <div class="col-xs-3">
 
             <a ng-repeat="item in products | orderBy:'category' | unique:'category'"
@@ -24,11 +24,10 @@
             </a>
         </div>
         <div class="col-xs-8">
-            <div ng-repeat="product in products">
+            <div ng-repeat="product in products |filter:categoryFilterFn">
                 <product-thumbnail product="product"></product-thumbnail>
             </div>
 
         </div>
     </div>
-</div>
 </div>
