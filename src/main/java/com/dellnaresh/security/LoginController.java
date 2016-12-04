@@ -30,4 +30,9 @@ public class LoginController {
         System.out.println(principal);
 
     }
+    @RequestMapping(method = RequestMethod.POST, value = "/logout", produces= {"application/json", "application/xml"})
+    public void logout(){
+        SecurityContextHolder.clearContext();
+
+    }
 }

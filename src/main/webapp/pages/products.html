@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="productController">
 
     <div class="row">
 
@@ -15,9 +15,15 @@
 
     </div>
 
-    <div class="row">
-        <div ng-controller="productController">
-            <div class="my-sample"></div>
+    <div class="panel panel-default row">
+        <div class="col-xs-3">
+
+            <a ng-repeat="item in products | orderBy:'category' | unique:'category'"
+               ng-click="selectCategory(item)" class=" btn btn-block btn-default btn-lg">
+                {{item}}
+            </a>
+        </div>
+        <div class="col-xs-8">
             <div ng-repeat="product in products">
                 <product-thumbnail product="product"></product-thumbnail>
             </div>

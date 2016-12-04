@@ -2,7 +2,7 @@
  * Main AngularJS Web Application
  */
 var app = angular.module('searchApp', [
-    'ngRoute', 'ui.bootstrap','exampleApp.services'
+    'ngRoute', 'ui.bootstrap','exampleApp.services','customFilters'
 ]);
 
 /**
