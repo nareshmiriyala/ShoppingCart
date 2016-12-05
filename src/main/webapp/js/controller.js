@@ -78,10 +78,15 @@ app.controller("LoginController",function ($scope, $location,  UserService){
 
 
 
-
-app.controller('productController', function ($scope, $http, $uibModal,productService) {
+app.constant("productListActiveClass", "btn-primary");
+app.controller('productController', function ($scope, $http, $uibModal,productService,productListActiveClass) {
     $scope.cart = [];
     var selectedCategory = null;
+    $scope.products = [];
+    $scope.viewby = 5;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = $scope.viewby;
+    $scope.maxSize = 5; //Number of pager buttons to show
     $scope.test=function(){
         console.log("test call");
     };
@@ -93,10 +98,23 @@ app.controller('productController', function ($scope, $http, $uibModal,productSe
         return selectedCategory == null ||
             product.category == selectedCategory;
     };
+    $scope.getCategoryClass = function (category) {
+        return selectedCategory == category ? productListActiveClass : "";
+    }
     $http.get('/products')
         .then(function (response) {
             $scope.products = response.data;
         });
+    $scope.pageChanged = function () {
+        console.log('Page changed to: ' + $scope.currentPage);
+    };
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
+    $scope.setItemsPerPage = function (num) {
+        $scope.itemsPerPage = num;
+        $scope.currentPage = 1; //reset to first page
+    };
     $scope.addToCart = function (product) {
         var found = false;
         console.log("Products:" + product);

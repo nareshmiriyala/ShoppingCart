@@ -36,6 +36,12 @@ public class Application implements CommandLineRunner {
                 withDescription("Absolutely great phone, Samsung at its best, great reply to all the negative critics. This is the best phone right now! \n")
                 .withUnitPrice(BigDecimal.valueOf(700)).withCategory("Phones")
                 .withImage("images//samsung.jpg").build());
+        productRepository.save(aProduct().withName("Furnicity Engineered Wood King Bed")
+                .withDescription("This bed is of queen size. Which gives a attractive look to ur Bed room. Which gives relaxation when you are tired. Within 6 months free service will be provided if any problem occurs in bed.")
+                .withCategory("Furniture").withUnitPrice(BigDecimal.valueOf(500)).withImage("images//bed.jpeg").build());
+        productRepository.save(aProduct().withName("Vu 80cm (32) HD Ready Smart LED TV")
+                .withDescription(" Enjoy playing games, watching videos on YouTube and browsing through a range of apps now on a bigger screen with this Vu 80 cm TV in your room. With the dBX TV sound, you can now enjoy all your favourite tracks with high quality sound effects.\n")
+                .withCategory("Electronics").withUnitPrice(BigDecimal.valueOf(300)).withImage("images//tv.jpeg").build());
     }
 
 }

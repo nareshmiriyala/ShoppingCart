@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container" ng-controller="productController">
 
     <div class="row">
 
@@ -15,19 +15,37 @@
 
     </div>
 
-    <div class="panel panel-default row" ng-controller="productController">
+    <div class="panel panel-default row" >
         <div class="col-xs-3">
 
             <a ng-repeat="item in products | orderBy:'category' | unique:'category'"
-               ng-click="selectCategory(item)" class=" btn btn-block btn-default btn-lg">
+               ng-click="selectCategory(item)" ng-class="getCategoryClass(item)" class=" btn btn-block btn-default btn-lg">
                 {{item}}
             </a>
         </div>
         <div class="col-xs-8">
-            <div ng-repeat="product in products |filter:categoryFilterFn">
+            <div>
+            <div ng-repeat="product in products.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) |filter:categoryFilterFn">
                 <product-thumbnail product="product"></product-thumbnail>
+
             </div>
 
         </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+        <option >1</option>
+        <option>5</option>
+        <option >10</option>
+        <option>20</option>
+        <option>30</option>
+        <option selected>40</option>
+        <option>50</option>
+    </select> records at a time.
+        <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"
+                        class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
     </div>
 </div>
